@@ -30,14 +30,14 @@ class CardTest {
 
     @DisplayName("Wrong rank letter code: NOT j, q, k or a")
     @ParameterizedTest
-    @ValueSource(strings = {"cz", "dw", "hu, st"})
+    @ValueSource(strings = {"cz", "dw", "hu", "st"})
     void constructor_ThrowsException_IfCardRankLetterIsInvalid(String cardCode) {
         assertThrows(NumberFormatException.class, () -> new Card(cardCode));
     }
 
     @DisplayName("Wrong rank number code: NOT between 2 and 10")
     @ParameterizedTest
-    @ValueSource(strings = {"c-1", "d0", "h1, s11"})
+    @ValueSource(strings = {"c-1", "d0", "h1", "s11"})
     void constructor_ThrowsException_IfCardRankNumberIsInvalid(String cardCode) {
         assertThrows(IllegalArgumentException.class, () -> new Card(cardCode));
     }
