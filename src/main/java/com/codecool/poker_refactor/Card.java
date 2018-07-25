@@ -1,3 +1,5 @@
+package com.codecool.poker_refactor;
+
 import java.util.HashMap;
 
 public class Card {
