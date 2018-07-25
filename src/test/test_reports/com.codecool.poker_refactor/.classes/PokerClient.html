@@ -1,0 +1,129 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PokerClient</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.codecool.poker_refactor</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PokerClient (com.codecool.poker_refactor)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PokerClient</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (25/ 25)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.codecool.poker_refactor;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.ArrayList;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;class PokerClient {
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    private static final String LOWEST_CARD = &quot;S2&quot;;
+<b class="fc"><i>9</i>&nbsp;    private List&lt;Card&gt; myCardsList = new ArrayList&lt;&gt;();</b>
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;
+<b class="fc"><i>12</i>&nbsp;    PokerClient(String p1, String p2, String p3, String p4, String p5) {</b>
+<b class="fc"><i>13</i>&nbsp;        myCardsList.add(new Card(p1.toUpperCase()));</b>
+<b class="fc"><i>14</i>&nbsp;        myCardsList.add(new Card(p2.toUpperCase()));</b>
+<b class="fc"><i>15</i>&nbsp;        myCardsList.add(new Card(p3.toUpperCase()));</b>
+<b class="fc"><i>16</i>&nbsp;        myCardsList.add(new Card(p4.toUpperCase()));</b>
+<b class="fc"><i>17</i>&nbsp;        myCardsList.add(new Card(p5.toUpperCase()));</b>
+<i>18</i>&nbsp;    }
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    boolean highestCardIsMine(String p1, String p2, String p3, String p4, String p5) {
+<i>21</i>&nbsp;
+<b class="fc"><i>22</i>&nbsp;        List&lt;Card&gt; opponentsCardsList = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>23</i>&nbsp;        opponentsCardsList.add(new Card(p1.toUpperCase()));</b>
+<b class="fc"><i>24</i>&nbsp;        opponentsCardsList.add(new Card(p2.toUpperCase()));</b>
+<b class="fc"><i>25</i>&nbsp;        opponentsCardsList.add(new Card(p3.toUpperCase()));</b>
+<b class="fc"><i>26</i>&nbsp;        opponentsCardsList.add(new Card(p4.toUpperCase()));</b>
+<b class="fc"><i>27</i>&nbsp;        opponentsCardsList.add(new Card(p5.toUpperCase()));</b>
+<i>28</i>&nbsp;
+<b class="fc"><i>29</i>&nbsp;        Card highestCard = new Card(LOWEST_CARD);</b>
+<i>30</i>&nbsp;
+<b class="fc"><i>31</i>&nbsp;        for (Card myCard : myCardsList) {</b>
+<b class="fc"><i>32</i>&nbsp;            for (Card opponentsCard : opponentsCardsList) {</b>
+<b class="fc"><i>33</i>&nbsp;                if (opponentsCard.getValue() &gt; myCard.getValue()</b>
+<b class="fc"><i>34</i>&nbsp;                        &amp;&amp; opponentsCard.getValue() &gt; highestCard.getValue()) {</b>
+<b class="fc"><i>35</i>&nbsp;                    highestCard = opponentsCard;</b>
+<b class="fc"><i>36</i>&nbsp;                } else if (opponentsCard.getValue() &lt; myCard.getValue()</b>
+<b class="fc"><i>37</i>&nbsp;                        &amp;&amp; myCard.getValue() &gt; highestCard.getValue()) {</b>
+<b class="fc"><i>38</i>&nbsp;                        highestCard = myCard;</b>
+<i>39</i>&nbsp;                    }
+<b class="fc"><i>40</i>&nbsp;                }</b>
+<b class="fc"><i>41</i>&nbsp;        }</b>
+<i>42</i>&nbsp;
+<b class="fc"><i>43</i>&nbsp;        return myCardsList.contains(highestCard);</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-07-25 20:38</div>
+</div>
+</body>
+</html>

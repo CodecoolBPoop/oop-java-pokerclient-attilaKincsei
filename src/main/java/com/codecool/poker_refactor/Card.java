@@ -4,30 +4,27 @@ import java.util.HashMap;
 
 class Card {
 
-    private String cardCode;
     private String cardRank;
-    private HashMap<String, Integer> abcCardRank = new HashMap<>();
+    private static HashMap<String, Integer> abcCardRank = new HashMap<>();
     private static final String DECK_SUITS = "CDHS";
-    private static final String DECK_ABC_RANKS = "JQKA";
 
-    Card(String cardCode) throws IllegalArgumentException {
-        this.cardCode = cardCode;
-
+    static {
         abcCardRank.put("J", 11);
         abcCardRank.put("Q", 12);
         abcCardRank.put("K", 13);
         abcCardRank.put("A", 14);
+    }
 
-        String cardSuit = this.cardCode.substring(0, 1).toUpperCase();
-        cardRank = this.cardCode.substring(1).toUpperCase();
-        Integer numericCardRank;
+    Card(String cardCode) throws IllegalArgumentException {
 
-        if (!DECK_SUITS.contains(cardSuit))
-        {
+        cardRank = cardCode.substring(1).toUpperCase();
+        String cardSuit = cardCode.substring(0, 1).toUpperCase();
+
+        if (!DECK_SUITS.contains(cardSuit)) {
             throw new IllegalArgumentException("Alphabetic card suit isn't valid: " + cardSuit);
-        } else if (!DECK_ABC_RANKS.contains(cardRank)) {
+        } else if (!abcCardRank.containsKey(cardRank)) {
             try {
-                numericCardRank = Integer.parseInt(cardRank);
+                Integer numericCardRank = Integer.parseInt(cardRank);
                 if (numericCardRank > 10 || numericCardRank < 2) {
                     throw new IllegalArgumentException("Numeric card rank isn't valid: " + numericCardRank);
                 }
@@ -39,7 +36,7 @@ class Card {
     }
 
     int getValue() {
-        return (DECK_ABC_RANKS.contains(cardRank)) ? abcCardRank.get(cardRank) : Integer.parseInt(cardRank);
+        return (abcCardRank.containsKey(cardRank)) ? abcCardRank.get(cardRank) : Integer.parseInt(cardRank);
     }
 }
 
